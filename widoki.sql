@@ -1,0 +1,1 @@
+CREATE VIEW klienci_view as SELECT imie, nazwisko, data_rejestracji, COUNT(w.id_klienta) FROM klienci k INNER JOIN wypozyczenia w ON k.id_klienta = w.id_klienta WHERE TIMESTAMPDIFF(MONTH, data_wypozyczenia, CURRENT_DATE) > 12 GROUP BY w.id_klienta HAVING COUNT(w.id_klienta) > 1;
